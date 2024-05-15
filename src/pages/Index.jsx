@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Container, VStack, HStack, Input, Button, Text, Checkbox, IconButton } from "@chakra-ui/react";
 import { FaTrash } from "react-icons/fa";
 
+console.log("Index component is being rendered");
+
 const Index = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
   const addTask = () => {
+    console.log("addTask function is being called");
     if (newTask.trim() !== "") {
       setTasks([...tasks, { text: newTask, completed: false }]);
       setNewTask("");
@@ -14,11 +17,13 @@ const Index = () => {
   };
 
   const deleteTask = (index) => {
+    console.log("deleteTask function is being called");
     const newTasks = tasks.filter((_, i) => i !== index);
     setTasks(newTasks);
   };
 
   const toggleTaskCompletion = (index) => {
+    console.log("toggleTaskCompletion function is being called");
     const newTasks = tasks.map((task, i) =>
       i === index ? { ...task, completed: !task.completed } : task
     );
